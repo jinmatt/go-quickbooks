@@ -1,0 +1,8 @@
+hash: 1dadae1e0b7803e5621ae91534586ed5bcf2dad19897bd8d01f56b0328d5e16f
+updated: 2017-07-08T13:36:25.871618752-07:00
+imports:
+- name: github.com/mrjones/oauth
+  version: 3f67d9c274355678b2f9844b08d643e2f9213340
+- name: github.com/tylerb/is
+  version: 18dbf8347a9045703d5b4f669f4a305980b5b6b0
+testImports: []

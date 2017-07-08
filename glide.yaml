@@ -1,0 +1,5 @@
+package: github.com/jinmatt/go-quickbooks
+import:
+- package: github.com/mrjones/oauth
+- package: github.com/tylerb/is
+  version: ^1.5.0
