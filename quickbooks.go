@@ -90,7 +90,7 @@ func (qb *quickbooks) makeGetRequest(endpoint string) (*http.Response, error) {
 			return nil, err
 		}
 
-		return nil, errors.UpstreamError(qbError.Fault.Error[0].Code, qbError.Fault.Error[0].Message)
+		return nil, errors.NewSDKError(qbError.Fault.Error[0].Code, qbError.Fault.Error[0].Message)
 	}
 
 	return res, nil

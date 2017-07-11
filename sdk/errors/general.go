@@ -2,5 +2,5 @@ package errors
 
 // General errors
 var (
-	InvalidRequestJSON = NewSDKError("general-1", "Invalid request JSON")
+	InvalidRequestJSON = NewSDKError("E101", "Invalid request JSON")
 )

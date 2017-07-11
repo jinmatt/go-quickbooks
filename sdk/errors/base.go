@@ -1,7 +1,5 @@
 package errors
 
-import "fmt"
-
 // SDKError error type
 type SDKError struct {
 	errorCode    string
@@ -25,10 +23,4 @@ func (e *SDKError) ErrorCode() string {
 // ErrorMessage returns error message from SDKError type
 func (e *SDKError) ErrorMessage() string {
 	return e.errorMessage
-}
-
-// UpstreamError generates error code and message from upstream API responses
-func UpstreamError(errorCode string, errorMessage string) *SDKError {
-	genErrorCode := fmt.Sprintf("Quickbooks Error %v", errorCode)
-	return &SDKError{genErrorCode, errorMessage}
 }
