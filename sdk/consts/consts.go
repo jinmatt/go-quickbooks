@@ -2,11 +2,12 @@ package consts
 
 // Global constants
 const (
-	QBO_ITEM_TYPE           = "Service"
-	QBO_ACCOUNT_TYPE        = "Income"
-	QBO_TXN_TYPE            = "Invoice"
-	QBO_INVOICE_DETAIL_TYPE = "SalesItemLineDetail"
-	CONTENT_TYPE_XML        = "text/xml"
+	QBItemType          = "Service"
+	QBAccountType       = "Income"
+	QBTxnType           = "Invoice"
+	QBInvoiceDetailType = "SalesItemLineDetail"
+	QBFaultType         = "AUTHENTICATION"
+	ContextTypeXML      = "text/xml"
 )
 
 // verb : http verbs
