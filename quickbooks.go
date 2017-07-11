@@ -70,14 +70,14 @@ func (qb *quickbooks) makeGetRequest(endpoint string) (*http.Response, error) {
 	}
 
 	if res.StatusCode != 200 {
-		if res.Header.Get("Content-Type") == consts.CONTENT_TYPE_XML {
+		if res.Header.Get("Content-Type") == consts.ContextTypeXML {
 			xmlErrorRes := types.IntuitResponse{}
 			err = xml.NewDecoder(res.Body).Decode(&xmlErrorRes)
 			if err != nil {
 				return nil, errors.QBApiFailure
 			}
 
-			if xmlErrorRes.Fault.Type == "AUTHENTICATION" {
+			if xmlErrorRes.Fault.Type == consts.QBFaultType {
 				return nil, errors.QBAuthFailure
 			}
 

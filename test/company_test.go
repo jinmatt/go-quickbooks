@@ -1,7 +1,6 @@
 package test
 
 import (
-	"log"
 	"testing"
 
 	"github.com/jinmatt/go-quickbooks"
@@ -21,7 +20,6 @@ func TestCompanyInfo(t *testing.T) {
 	)
 
 	companyInfo, err := qbo.GetCompanyInfo()
-	log.Println(err.Error())
 	is.NotErr(err)
 	is.NotNil(companyInfo.CompanyInfo.CompanyName)
 }
