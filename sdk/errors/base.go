@@ -14,7 +14,7 @@ func NewSDKError(errorCode, errorMessage string) *SDKError {
 }
 
 func (e *SDKError) Error() string {
-	return e.errorCode + ": " + e.errorMessage
+	return "Error: " + e.errorCode + " Message: " + e.errorMessage
 }
 
 // ErrorCode returns error code from SDKError type
