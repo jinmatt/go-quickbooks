@@ -3,7 +3,6 @@ package quickbooks
 import (
 	"encoding/json"
 	"encoding/xml"
-	"fmt"
 	"net/http"
 
 	"github.com/jinmatt/go-quickbooks/sdk"
@@ -47,25 +46,6 @@ func NewClient(consumerKey, consumerSecret, oauthToken, oauthSecret, realmID str
 	}
 
 	return q
-}
-
-// GetCompanyInfo returns company info based on realm ID/company ID passed to NewClient options
-func (qb *quickbooks) GetCompanyInfo() (*types.Company, error) {
-	endpoint := fmt.Sprintf("/company/%s/companyinfo/%s", qb.realmID, qb.realmID)
-
-	res, err := qb.makeGetRequest(endpoint)
-	if err != nil {
-		return nil, err
-	}
-	defer res.Body.Close()
-
-	company := types.Company{}
-	err = json.NewDecoder(res.Body).Decode(&company)
-	if err != nil {
-		return nil, err
-	}
-
-	return &company, nil
 }
 
 func (qb *quickbooks) makeGetRequest(endpoint string) (*http.Response, error) {
