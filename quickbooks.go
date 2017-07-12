@@ -89,28 +89,30 @@ func (qb *quickbooks) makeGetRequest(endpoint string) (*http.Response, error) {
 	}
 
 	if res.StatusCode != 200 {
-		if res.Header.Get("Content-Type") == consts.ContextTypeXML {
-			xmlErrorRes := types.IntuitResponse{}
-			err = xml.NewDecoder(res.Body).Decode(&xmlErrorRes)
-			if err != nil {
-				return nil, errors.QBApiFailure
-			}
-
-			if xmlErrorRes.Fault.Type == consts.QBFaultType {
-				return nil, errors.QBAuthFailure
-			}
-
-			return nil, errors.QBApiFailure
-		}
-
-		qbError := types.Error{}
-		err = json.NewDecoder(res.Body).Decode(&qbError)
-		if err != nil {
-			return nil, err
-		}
-
-		return nil, errors.NewSDKError(qbError.Fault.Error[0].Code, qbError.Fault.Error[0].Message)
+		return qb.handleResponseError(res)
 	}
 
 	return res, nil
+}
+
+func (qb *quickbooks) handleResponseError(res *http.Response) (*http.Response, error) {
+	if res.Header.Get("Content-Type") == consts.ContextTypeXML {
+		xmlErrorRes := types.IntuitResponse{}
+		if err := xml.NewDecoder(res.Body).Decode(&xmlErrorRes); err != nil {
+			return nil, err
+		}
+
+		if xmlErrorRes.Fault.Type == consts.QBFaultType {
+			return nil, errors.QBAuthFailure
+		}
+
+		return nil, errors.NewSDKError(xmlErrorRes.Fault.Error.Code, xmlErrorRes.Fault.Error.Message)
+	}
+
+	qbError := types.Error{}
+	if err := json.NewDecoder(res.Body).Decode(&qbError); err != nil {
+		return nil, err
+	}
+
+	return nil, errors.NewSDKError(qbError.Fault.Error[0].Code, qbError.Fault.Error[0].Message)
 }
