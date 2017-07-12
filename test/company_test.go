@@ -19,7 +19,7 @@ func TestCompanyInfo(t *testing.T) {
 		true,
 	)
 
-	companyInfo, err := qbo.GetCompanyInfo()
+	company, err := qbo.GetCompanyInfo()
 	is.NotErr(err)
-	is.NotNil(companyInfo.CompanyInfo.CompanyName)
+	is.NotNil(company.CompanyInfo.CompanyName)
 }

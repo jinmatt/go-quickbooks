@@ -15,8 +15,8 @@ type CustomerObject struct {
 type Customer struct {
 	ID                      string            `json:"ID,omitempty"`
 	Taxable                 bool              `json:"Taxable,omitempty"`
-	BillAddr                *address          `json:"BillAddr,omitempty"`
-	ShipAddr                *address          `json:"ShipAddr,omitempty"`
+	BillAddr                *Address          `json:"BillAddr,omitempty"`
+	ShipAddr                *Address          `json:"ShipAddr,omitempty"`
 	Job                     bool              `json:"Job,omitempty"`
 	BillWithParent          bool              `json:"BillWithParent,omitempty"`
 	Balance                 float64           `json:"Balance,omitempty"`
@@ -33,12 +33,12 @@ type Customer struct {
 	DisplayName             string            `json:"DisplayName"`
 	PrintOnCheckName        string            `json:"PrintOnCheckName,omitempty"`
 	Active                  bool              `json:"Active,omitempty"`
-	PrimaryPhone            *primaryPhone     `json:"PrimaryPhone,omitempty"`
-	PrimaryEmailAddr        *primaryEmailAddr `json:"PrimaryEmailAddr,omitempty"`
-	MetaData                *metaData         `json:"MetaData,omitempty"`
+	PrimaryPhone            *PrimaryPhone     `json:"PrimaryPhone,omitempty"`
+	PrimaryEmailAddr        *PrimaryEmailAddr `json:"PrimaryEmailAddr,omitempty"`
+	MetaData                *MetaData         `json:"MetaData,omitempty"`
 }
 
-type address struct {
+type Address struct {
 	ID                     string `json:"Id,omitempty"`
 	Line1                  string `json:"Line1"`
 	Line2                  string `json:"Line2,omitempty"`
@@ -49,15 +49,15 @@ type address struct {
 	Long                   string `json:"Long,omitempty"`
 }
 
-type primaryPhone struct {
+type PrimaryPhone struct {
 	FreeFormNumber string `json:"FreeFormNumber"`
 }
 
-type primaryEmailAddr struct {
+type PrimaryEmailAddr struct {
 	Address string `json:"Address"`
 }
 
-type metaData struct {
+type MetaData struct {
 	CreateTime      string `json:"CreateTime"`
 	LastUpdatedTime string `json:"LastUpdatedTime"`
 }
