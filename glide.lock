@@ -1,8 +1,12 @@
-hash: 1dadae1e0b7803e5621ae91534586ed5bcf2dad19897bd8d01f56b0328d5e16f
-updated: 2017-07-08T13:36:25.871618752-07:00
+hash: e0fe3f55876346f355be02d426ca3d4da8e5b9997c5b0548da7ee705fb2ab3df
+updated: 2017-07-12T16:19:36.715792466-07:00
 imports:
+- name: github.com/jinmatt/go-seed-rand
+  version: e1d37704c07eb0daccb705e8565a35de0305658a
 - name: github.com/mrjones/oauth
   version: 3f67d9c274355678b2f9844b08d643e2f9213340
+- name: github.com/Pallinder/go-randomdata
+  version: 8c3362a5e6781e0d1046f1267b3c1f19b2cde334
 - name: github.com/tylerb/is
   version: 18dbf8347a9045703d5b4f669f4a305980b5b6b0
 testImports: []

@@ -1,6 +1,7 @@
 package quickbooks
 
 import (
+	"bytes"
 	"encoding/json"
 	"encoding/xml"
 	"net/http"
@@ -50,13 +51,45 @@ func NewClient(consumerKey, consumerSecret, oauthToken, oauthSecret, realmID str
 
 func (qb *quickbooks) makeGetRequest(endpoint string) (*http.Response, error) {
 	rURL := qb.baseURL + endpoint
-	req, err := http.NewRequest("GET", rURL, nil)
+	req, err := http.NewRequest(consts.Verb.Get, rURL, nil)
 	if err != nil {
 		return nil, err
 	}
 
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("Content-Type", "text/plain")
+
+	httpClient, err := qb.oauthClient.MakeHttpClient(qb.accessToken)
+	if err != nil {
+		return nil, err
+	}
+
+	res, err := httpClient.Do(req)
+	if err != nil {
+		return nil, err
+	}
+
+	if res.StatusCode != 200 {
+		return qb.handleResponseError(res)
+	}
+
+	return res, nil
+}
+
+func (qb *quickbooks) makePostRequest(endpoint string, body interface{}) (*http.Response, error) {
+	rURL := qb.baseURL + endpoint
+	b, err := json.Marshal(body)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest(consts.Verb.Post, rURL, bytes.NewReader(b))
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("Content-Type", "application/json")
 
 	httpClient, err := qb.oauthClient.MakeHttpClient(qb.accessToken)
 	if err != nil {
