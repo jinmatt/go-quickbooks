@@ -4,7 +4,7 @@ package test
 const (
 	ConsumerKey    = "qyprdYz8KGqTPaMbQd6VPaFjVmef0q"
 	ConsumerSecret = "aacViUbJytqmtNKlX33FPEnc8q9dVmeiLShgvK77"
-	AccessToken    = "qyprdVXIsxvphzj1hZfFwfnfgZRpHK657lXmeEfGIH8UaiJl"
-	AccessSecret   = "rLUwWVs0Hdp2bhAFezT97fMde5RN6xC4SQk9rpNM"
+	AccessToken    = "qyprdkR5vfdxuIEOL1LU3LuWVG2LOG9vEDp2AMcTADNDZaIR"
+	AccessSecret   = "Hlhvn8aYbHiGHSvGr7ej2XjRirQtgmRZIb9mbWWp"
 	RealmID        = "123145793143379"
 )
