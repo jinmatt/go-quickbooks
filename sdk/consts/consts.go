@@ -2,12 +2,9 @@ package consts
 
 // Global constants
 const (
-	QBItemType          = "Service"
-	QBAccountType       = "Income"
-	QBTxnType           = "Invoice"
-	QBInvoiceDetailType = "SalesItemLineDetail"
-	QBFaultType         = "AUTHENTICATION"
-	ContextTypeXML      = "text/xml"
+	QBFaultType    = "AUTHENTICATION"
+	ContextTypeXML = "text/xml"
+	QBAccountType  = "Income"
 )
 
 // verb : http verbs
@@ -21,18 +18,5 @@ var (
 	Verb = verb{
 		Get:  "GET",
 		Post: "POST",
-	}
-)
-
-// QBQueryTypes consts for search type
-var (
-	QBQueryItemType     = "item"
-	QBQueryAccountType  = "account"
-	QBQueryCustomerType = "customer"
-	// this map makes it easy for validation
-	QBQueryTypes = map[string]bool{
-		QBQueryItemType:     true,
-		QBQueryAccountType:  true,
-		QBQueryCustomerType: true,
 	}
 )

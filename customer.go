@@ -13,7 +13,7 @@ type CustomerObject struct {
 
 // Customer quickbooks customer type
 type Customer struct {
-	ID                      string            `json:"ID,omitempty"`
+	ID                      string            `json:"Id,omitempty"`
 	Taxable                 bool              `json:"Taxable,omitempty"`
 	BillAddr                *Address          `json:"BillAddr,omitempty"`
 	ShipAddr                *Address          `json:"ShipAddr,omitempty"`
