@@ -119,7 +119,7 @@ func (qb *quickbooks) handleResponseError(res *http.Response) (*http.Response, e
 			return nil, errors.QBAuthFailure
 		}
 
-		return nil, errors.NewSDKError(xmlErrorRes.Fault.Error.Code, xmlErrorRes.Fault.Error.Message)
+		return nil, errors.NewSDKError(xmlErrorRes.Fault.Error.Code, xmlErrorRes.Fault.Error.Detail)
 	}
 
 	qbError := types.Error{}
@@ -127,5 +127,5 @@ func (qb *quickbooks) handleResponseError(res *http.Response) (*http.Response, e
 		return nil, err
 	}
 
-	return nil, errors.NewSDKError(qbError.Fault.Error[0].Code, qbError.Fault.Error[0].Message)
+	return nil, errors.NewSDKError(qbError.Fault.Error[0].Code, qbError.Fault.Error[0].Detail)
 }

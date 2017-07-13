@@ -10,7 +10,7 @@ import (
 	"github.com/tylerb/is"
 )
 
-func TestCreateAccount(t *testing.T) {
+func TestCreateItem(t *testing.T) {
 	is := is.New(t)
 
 	qbo := quickbooks.NewClient(
@@ -22,12 +22,23 @@ func TestCreateAccount(t *testing.T) {
 		true,
 	)
 
+	// create a chart of account for item
 	account := quickbooks.Account{}
 	account.Name = randomdata.SillyName() + seed.RandomKey(7)
 	account.AccountType = consts.QBAccountIncomeType
-
 	newAccount, err := qbo.CreateAccount(account)
 	is.NotErr(err)
-	is.NotNil(newAccount.Account.ID)
-	is.Equal(account.Name, newAccount.Account.Name)
+
+	item := quickbooks.Item{}
+	item.Name = randomdata.SillyName() + seed.RandomKey(7)
+	item.IncomeAccountRef = &quickbooks.AccountRef{
+		Value: newAccount.Account.ID,
+		Name:  newAccount.Account.Name,
+	}
+	item.Type = consts.QBItemServiceType
+
+	newItem, err := qbo.CreateItem(item)
+	is.NotErr(err)
+	is.NotNil(newItem.Item.ID)
+	is.Equal(item.Name, newItem.Item.Name)
 }

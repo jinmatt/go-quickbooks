@@ -2,9 +2,10 @@ package consts
 
 // Global constants
 const (
-	QBFaultType    = "AUTHENTICATION"
-	ContextTypeXML = "text/xml"
-	QBAccountType  = "Income"
+	QBFaultType         = "AUTHENTICATION"
+	ContextTypeXML      = "text/xml"
+	QBAccountIncomeType = "Income"
+	QBItemServiceType   = "Service"
 )
 
 // verb : http verbs
